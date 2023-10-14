@@ -1,0 +1,27 @@
+<div class="bg-white rounded-lg shadow-md p-4 m-4">
+  <h2 class="text-lg font-bold mb-4">
+    Q.{{ questionNumber }} {{ question.question }}
+  </h2>
+  <ul>
+    <li *ngFor="let answer of question.answers | keyvalue">
+      <label class="block my-2">
+        <input
+          *ngIf="answer.value !== null"
+          type="radio"
+          [name]="question.id"
+          [value]="answer"
+          (change)="selectAnswer(question, answer.key)"
+        />
+        {{ answer.value }}
+      </label>
+    </li>
+  </ul>
+</div>
+<button
+  [disabled]="!isAnswerSelected"
+  (click)="nextQuestion()"
+  class=""
+  [ngClass]="{disabled:!isAnswerSelected, active:isAnswerSelected}"
+>
+  {{ totalQuestion === questionNumber ? "Submit" : "Next" }}
+</button>
