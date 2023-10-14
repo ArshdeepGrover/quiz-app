@@ -1,0 +1,8 @@
+<p *ngIf="previousScore">
+  Welcome back! We're thrilled to see you again. Your previous score was
+  {{ previousScore }}. Are you ready to beat your own record and show off your
+  knowledge? Let's dive into the exciting world of trivia and fun challenges.
+  Good luck!
+</p>
+
+<button [routerLink]="'./quiz'" class="start-quiz">Start</button>

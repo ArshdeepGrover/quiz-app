@@ -1,7 +1,10 @@
+.next-button {
+  @apply py-2 px-4 mt-4;
+}
 .disabled {
-  @apply bg-gray-300 text-gray-400 py-2 px-4 mt-4;
+  @apply bg-gray-300 text-gray-400;
 }
 
 .active {
-  @apply bg-blue-500 text-white py-2 px-4 mt-4;
+  @apply bg-purple-500 text-white rounded-md hover:bg-purple-600;
 }

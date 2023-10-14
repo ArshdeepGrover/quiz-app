@@ -9,6 +9,7 @@ import { ResultComponent } from './components/result/result.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { QuestionCardComponent } from './components/question/question-card/question-card.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { QuestionCardComponent } from './components/question/question-card/quest
     QuestionComponent,
     ResultComponent,
     QuestionCardComponent,
+    DashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

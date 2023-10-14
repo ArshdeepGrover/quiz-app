@@ -5,23 +5,13 @@
       [ngStyle]="{ width: currentQuestion + 1 + '0%' }"
     ></div>
   </div>
-  <div *ngIf="previousScore" class="mt-3">
-    Your Previous Score for quiz was {{ previousScore }}
-    <small (click)="resetPreviousScore()">(reset)</small>
-  </div>
   <div *ngIf="currentQuestion < questions.length">
     <app-question-card
       [question]="questions[currentQuestion]"
       [questionNumber]="currentQuestion + 1"
       [totalQuestion]="questions.length"
-      (showNextAnswer)="checkScore($event)"
+      (showNextQuestion)="checkAndNextQuestion($event)"
     ></app-question-card>
   </div>
   <h1 class="text-xl">Your Score For this Quiz was {{ score }}</h1>
-</div>
-
-<div *ngIf="quizFinish">
-  <h1 class="text-xl">Your Final Score For this Quiz was {{ score }}</h1>
-
-  <button class="button" (click)="startAgain()">Start Again</button>
 </div>

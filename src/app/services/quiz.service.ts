@@ -20,10 +20,10 @@ export class QuizService {
       .set('apiKey', this.apiKey)
       .set('limit', limit);
     if (difficulty) {
-      params = new HttpParams().set('difficulty', difficulty);
+      params = params.set('difficulty', difficulty);
     }
     if (category) {
-      params = new HttpParams().set('category', category);
+      params = params.set('category', category);
     }
 
     return this.http.get<QuizQuestion[]>(`${this.apiUrl}`, { params });

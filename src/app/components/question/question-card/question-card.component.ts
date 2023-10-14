@@ -13,7 +13,7 @@ export class QuestionCardComponent {
   isAnswerCorrect: boolean = false;
   isAnswerSelected: boolean = false;
 
-  @Output() showNextAnswer = new EventEmitter<boolean>();
+  @Output() showNextQuestion = new EventEmitter<boolean>();
 
   selectAnswer(question: QuizQuestion, selectedAnswer: string) {
     const correctAnswer = question.correct_answer;
@@ -22,6 +22,6 @@ export class QuestionCardComponent {
   }
 
   nextQuestion() {
-    this.showNextAnswer.emit(this.isAnswerCorrect);
+    this.showNextQuestion.emit(this.isAnswerCorrect);
   }
 }

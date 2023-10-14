@@ -20,8 +20,8 @@
 <button
   [disabled]="!isAnswerSelected"
   (click)="nextQuestion()"
-  class=""
-  [ngClass]="{disabled:!isAnswerSelected, active:isAnswerSelected}"
+  class="next-button"
+  [ngClass]="{ disabled: !isAnswerSelected, active: isAnswerSelected }"
 >
   {{ totalQuestion === questionNumber ? "Submit" : "Next" }}
 </button>
