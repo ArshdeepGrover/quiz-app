@@ -10,18 +10,27 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class QuizComponent implements OnInit {
   questions: QuizQuestion[] = [];
   isLoading = false;
-  selectedDifficulty: string = '';
-  selectedCategory: string = '';
+  selectedDifficulty: string = 'easy';
+  selectedCategory: string = 'linux';
+  noQuestionsFound: boolean = false;
+
   constructor(private quizServe: QuizService) {}
   ngOnInit(): void {}
 
   getQuestions() {
     this.isLoading = true;
+    this.noQuestionsFound = false;
     this.quizServe
       .getQuestions(10, this.selectedDifficulty, this.selectedCategory)
-      .subscribe((data: QuizQuestion[]) => {
-        this.questions = data;
-        this.isLoading = false;
-      });
+      .subscribe(
+        (data: QuizQuestion[]) => {
+          this.questions = data;
+          this.isLoading = false;
+        },
+        (error) => {
+          if (error.status === 404) this.noQuestionsFound = true;
+          this.isLoading = false;
+        }
+      );
   }
 }

@@ -1,39 +1,47 @@
-<div class="grid gap-8 grid-cols-2" *ngIf="questions.length === 0">
-  <div class="w-full">
-    <label for="category" class="block text-gray-700 text-sm font-bold mb-2"
-      >Category</label
-    >
-    <select
-      id="category"
-      class="w-full p-2 border rounded-md shadow-sm"
-      [(ngModel)]="selectedCategory"
-    >
-      <option value="linux">Linux</option>
-      <option value="devOps">DevOps</option>
-      <option value="networking">Networking</option>
-      <option value="cloud">Cloud</option>
-      <option value="docker">Docker</option>
-    </select>
+<app-loader *ngIf="isLoading; else showButtons"></app-loader>
+
+<ng-template #showButtons>
+  <div class="grid gap-8 grid-cols-2" *ngIf="questions.length === 0">
+    <div class="dropdown">
+      <label for="category">Category</label>
+      <select id="category" [(ngModel)]="selectedCategory">
+        <option value="linux">Linux</option>
+        <option value="devOps">DevOps</option>
+        <option value="networking">Networking</option>
+        <option value="cloud">Cloud</option>
+        <option value="docker">Docker</option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty" [(ngModel)]="selectedDifficulty">
+        <option selected value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
   </div>
 
-  <div class="w-full">
-    <label for="difficulty" class="block text-gray-700 text-sm font-bold mb-2"
-      >Difficulty</label
-    >
-    <select
-      id="difficulty"
-      class="w-full p-2 border rounded-md shadow-sm"
-      [(ngModel)]="selectedDifficulty"
-    >
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+  <div *ngIf="noQuestionsFound" class="no-question-error">
+    oops! Seems Technical Issue! Please choose some another category
   </div>
-</div>
 
-<button (click)="getQuestions()">Start Quiz</button>
-
-<div *ngIf="questions.length > 0">
+  <div class="start-quiz-button" *ngIf="questions.length === 0">
+    <button
+      class="start-quiz group"
+      (click)="getQuestions()"
+      [ngClass]="{ 'cursor-not-allowed': isLoading }"
+      [disabled]="isLoading"
+    >
+      <span
+        class="duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+      >
+        Start Quiz
+      </span>
+    </button>
+  </div>
+</ng-template>
+<div *ngIf="questions.length > 0 && !noQuestionsFound">
   <app-question [questions]="questions"></app-question>
 </div>

@@ -4,7 +4,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { QuizComponent } from 'src/app/components/quiz/quiz.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: QuizComponent },
   { path: 'quiz', component: QuizComponent }, // Add the route for "quiz"
 ];
 

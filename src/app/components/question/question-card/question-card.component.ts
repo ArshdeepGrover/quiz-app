@@ -22,6 +22,7 @@ export class QuestionCardComponent {
   }
 
   nextQuestion() {
+    this.isAnswerSelected = false;
     this.showNextQuestion.emit(this.isAnswerCorrect);
   }
 }
