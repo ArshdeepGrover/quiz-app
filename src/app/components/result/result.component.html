@@ -1,1 +1,12 @@
-<p>result works!</p>
+<div *ngIf="score >= 7; else lessThanSeven">
+  <h1>Congratulations!</h1>
+  <p>Your score is {{ score }}</p>
+  <p>You passed the quiz. Great job!</p>
+</div>
+<ng-template #lessThanSeven>
+  <h1>Try Again!</h1>
+  <p>Your score is {{ score }}</p>
+  <p>You did not pass the quiz. Better luck next time!</p>
+</ng-template>
+
+<canvas id="confetti" width="1" height="1"></canvas>

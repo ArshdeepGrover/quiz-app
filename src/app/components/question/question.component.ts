@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuizQuestion } from 'src/app/models/quiz-question';
 import { QuizService } from 'src/app/services/quiz.service';
 
@@ -15,7 +16,7 @@ export class QuestionComponent implements OnInit {
   quizFinish: boolean = false;
   isLoading: boolean = true;
 
-  constructor(private quizServe: QuizService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,6 +27,12 @@ export class QuestionComponent implements OnInit {
     if (this.currentQuestion < this.questions.length - 1) {
       this.currentQuestion++;
     } else {
+      this.showResult();
     }
+  }
+
+  showResult() {
+    localStorage.setItem('userQuizScore', this.score.toString());
+    this.router.navigate(['result']);
   }
 }
