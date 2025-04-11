@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import * as confetti from 'canvas-confetti';
-
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -11,7 +9,7 @@ export class ResultComponent implements OnInit {
   score!: number;
   canvas = <HTMLCanvasElement>document.getElementById('confetti');
 
-  constructor(private route: ActivatedRoute) {}
+  constructor() {}
   ngOnInit(): void {
     this.score = Number(localStorage.getItem('userQuizScore'));
     if (this.score >= 7) {
@@ -29,4 +27,6 @@ export class ResultComponent implements OnInit {
       ticks: 500,
     });
   }
+
+  retry() {}
 }

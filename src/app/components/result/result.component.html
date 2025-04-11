@@ -1,12 +1,20 @@
-<div *ngIf="score >= 7; else lessThanSeven">
-  <h1>Congratulations!</h1>
-  <p>Your score is {{ score }}</p>
+<div *ngIf="score >= 7; else lessThanSeven" class="celebration-container">
+  <h1 class="glow">🎉 Congratulations! 🎉</h1>
+  <p class="score-text">Your score is {{ score }}</p>
   <p>You passed the quiz. Great job!</p>
+  <a [routerLink]="['']">
+    <button class="retry-button">Start again</button>
+  </a>
+  <canvas id="confetti"></canvas>
 </div>
-<ng-template #lessThanSeven>
-  <h1>Try Again!</h1>
-  <p>Your score is {{ score }}</p>
-  <p>You did not pass the quiz. Better luck next time!</p>
-</ng-template>
 
-<canvas id="confetti" width="1" height="1"></canvas>
+<ng-template #lessThanSeven>
+  <div class="sad-container">
+    <h1>😞 Try Again!</h1>
+    <p>Your score is {{ score }}</p>
+    <p>You did not pass the quiz. Better luck next time!</p>
+    <a [routerLink]="['']">
+      <button class="retry-button">Retry</button>
+    </a>
+  </div>
+</ng-template>
